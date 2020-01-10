@@ -62,7 +62,7 @@ while Campeones[p1].getHp() < 0 or Campeones[p2].getNombre() < 0:
 
     if turno==0:
         while sk:
-            print("Escoge una habilidad")
+            print("Escoge una  habilidad")
             print(Campeones[p1].getHabilidades()[0].getSkillname() + " /Damage: " + str(
                 Campeones[p1].getHabilidades()[0].getDamage()) + " /Curacion: " + str(
                 Campeones[p1].getHabilidades()[0].getHealth()) + " /Shield: " + str(
