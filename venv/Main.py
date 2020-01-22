@@ -68,17 +68,13 @@ while  p1.getHp() > 0 and p2.getHp() > 0:
 
     x=0
     for h in p1.getHabilidades():
-        print (str(x)+" "+h.getSkillname())
+        print (str(x)+" "+h.getSkillname()+ " /Damage: "+str(h.getDamage())+" /Health: "+str(h.getHealth())+" /Shield: "+str(h.getShield()))
         x=x+1
     habilidadp1 = int(input("Elige una habilidad"))
     p2.restarVida(p1.getHabilidades()[habilidadp1].getDamage())
 
     x=0
-    for h in p1.getHabilidades():
-        print (str(x) + " " + h.getSkillname())
-        x = x + 1
-    habilidadp2 = random.randint(0,3)
-    p1.restarVida(p1.getHabilidades()[habilidadp2].getDamage())
+
 
 
 

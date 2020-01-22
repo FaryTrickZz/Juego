@@ -2,11 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="72a2ff2f-558e-46ef-85af-d17fb4a4d355" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Habilidades.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Habilidades.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/venv/Main.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Personaje.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Personaje.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/SkillsX.py" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
