@@ -22,16 +22,21 @@ class Habilidades:
         return self.health
 
     def sumarHealth(self, health):
-        self.health = health
+        self.getHealth(self.getHealth()+health)
 
     def getShield(self):
         return self.shield
 
     def setshield(self, shield):
-        self.shield = shield
+        self.getShield(self.getShield()+shield)
 
     def rSylas(self,damage):
         self.setDamage(damage)
+
+
+
+
+
 
 
 

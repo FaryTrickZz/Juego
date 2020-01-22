@@ -1,7 +1,8 @@
 from Personaje import Personaje
 from Habilidades import Habilidades
+from ListaPersonajes import ListaPersonajes
 import random
-
+from os import system, name
 
 qKayn=Habilidades("Corte Segador", 140, 0, 0)
 wKayn=Habilidades("Alcance de cuchilla", 270, 0, 0)
@@ -37,50 +38,47 @@ Ekko.setHabilidades(wEkko)
 Ekko.setHabilidades(eEkko)
 Ekko.setHabilidades(rEkko)
 
-
-Campeones=[Kayn, Sylas, Ekko]
+Lista1=ListaPersonajes("Lista Campeones")
+Lista1.setCampeones(Kayn)
+Lista1.setCampeones(Sylas)
+Lista1.setCampeones(Ekko)
 
 print("~---------------------~")
-print("| "+ Kayn.getNombre() +" | "+ Sylas.getNombre() +" | "+ Ekko.getNombre() +" |")
+print("| "+ Lista1.getCampeones()[0].getNombre() +" | "+Lista1.getCampeones()[1].getNombre() +" | "+Lista1.getCampeones()[2].getNombre() +" | ")
 print("~---------------------~")
 
 p1=int(input("Elige un personaje"))
-print("Has elegido a "+ Campeones[p1].getNombre())
 p2=random.randint(0,2)
-print("Vas a pelear contra "+ Campeones[p2].getNombre())
+while p2 == p1:
+    p2 = random.randint(0, 2)
 
-while Campeones[p1].getHp() < 0 or Campeones[p2].getNombre() < 0:
+p1=Lista1.getCampeones()[p1]
+p2=Lista1.getCampeones()[p2]
+print("Has elegido a "+ p1.getNombre())
+print("Vas a pelear contra "+ p2.getNombre())
+
+
+while  p1.getHp() > 0 and p2.getHp() > 0:
     print("~------------------------~")
-    print("|               "+ str(Campeones[p2].getHp()) +"|"+ Campeones[p2].getNombre() +" |")
+    print("|               "+ str(p2.getHp()) +"|"+ p2.getNombre() +" |")
     print("|                        |")
-    print("| "+ Campeones[p1].getNombre() +"|"+ str(Campeones[p1].getHp())+"                |")
+    print("| "+  p1.getNombre() +"|"+ str( p1.getHp())+"                |")
     print("~---------------------~")
 
 
-    turno=random.randint(0)
+    x=0
+    for h in p1.getHabilidades():
+        print (str(x)+" "+h.getSkillname())
+        x=x+1
+    habilidadp1 = int(input("Elige una habilidad"))
+    p2.restarVida(p1.getHabilidades()[habilidadp1].getDamage())
 
-
-    if turno==0:
-        while sk:
-            print("Escoge una  habilidad")
-            print(Campeones[p1].getHabilidades()[0].getSkillname() + " /Damage: " + str(
-                Campeones[p1].getHabilidades()[0].getDamage()) + " /Curacion: " + str(
-                Campeones[p1].getHabilidades()[0].getHealth()) + " /Shield: " + str(
-                Campeones[p1].getHabilidades()[0].getShield()))
-            print(Campeones[p1].getHabilidades()[1].getSkillname() + " /Damage: " + str(
-                Campeones[p1].getHabilidades()[1].getDamage()) + " /Curacion: " + str(
-                Campeones[p1].getHabilidades()[1].getHealth()) + " /Shield: " + str(
-                Campeones[p1].getHabilidades()[1].getShield()))
-            print(Campeones[p1].getHabilidades()[2].getSkillname() + " /Damage: " + str(
-                Campeones[p1].getHabilidades()[2].getDamage()) + " /Curacion: " + str(
-                Campeones[p1].getHabilidades()[2].getHealth()) + " /Shield: " + str(
-                Campeones[p1].getHabilidades()[2].getShield()))
-            print(Campeones[p1].getHabilidades()[3].getSkillname() + " /Damage: " + str(
-                Campeones[p1].getHabilidades()[3].getDamage()) + " /Curacion: " + str(
-                Campeones[p1].getHabilidades()[3].getHealth()) + " /Shield: " + str(
-                Campeones[p1].getHabilidades()[3].getShield()))
-            x=int(input())
-
+    x=0
+    for h in p1.getHabilidades():
+        print (str(x) + " " + h.getSkillname())
+        x = x + 1
+    habilidadp2 = random.randint(0,3)
+    p1.restarVida(p1.getHabilidades()[habilidadp2].getDamage())
 
 
 
