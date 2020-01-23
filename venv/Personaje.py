@@ -112,8 +112,8 @@ class Personaje:
                 print("Te has curado: " + str(self.getHabilidades()[3].getHealth()))
                 print("Cantidad de escudo obtenida: " + str(self.getHabilidades()[3].getShield()))
 
-    def restarVida(self, vida):
-        self.setHp(self.getHp()-vida)
+    def restarVida(self, damage):
+        self.setHp(self.getHp()-damage)
 
 
 
