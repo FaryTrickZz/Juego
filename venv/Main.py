@@ -65,9 +65,12 @@ print("Vas a pelear contra "+ p2.getNombre())
 #Turnos de los personajes
 Turnop1 = 0
 Turnop2 = 0
+habilidadp1 = 0
+habilidadp2 = 0
 
 #Si la vida de un pj llega a 0 se acaba el combate
 while  p1.getHp() > 0 and p2.getHp() > 0:
+
 
     #Grafica de los personajes
     print("~------------------------~")
@@ -79,7 +82,7 @@ while  p1.getHp() > 0 and p2.getHp() > 0:
 
     turno = 0
 
-    if Stun = 1:
+    if p2.getHabilidades()[habilidadp2].getStun()==0:
 
         #Eleccion de habilidad P1
         x=0
@@ -94,13 +97,13 @@ while  p1.getHp() > 0 and p2.getHp() > 0:
 
         #Comprueba la habilidad elegida
         if habilidadp1 == 0:
-            p1.getHabilidades[habilidadp1]().qSkill()
+            p1.getHabilidades()[habilidadp1].qSkill(p1.getNombre)
         elif habilidadp1 == 1:
-            p1.getHabilidades[habilidadp1]().wSkill()
+            p1.getHabilidades()[habilidadp1].wSkill(p1.getNombre)
         elif habilidadp1 == 2:
-            p1.getHabilidades[habilidadp1]().eSkill()
+            p1.getHabilidades()[habilidadp1].eSkill(p1.getNombre)
         elif habilidadp1 == 3:
-            p1.getHabilidades[habilidadp1]().qSkill()
+            p1.getHabilidades()[habilidadp1].qSkill(p1.getNombre)
 
         #Comprueba si la habilidad estunea
         if p1.getHabilidades()[habilidadp1].getStun == 1:
@@ -117,53 +120,62 @@ while  p1.getHp() > 0 and p2.getHp() > 0:
         #Restar vida al oponente
         p2.restarVida(p1.getHabilidades()[habilidadp1].getDamage())
 
-    #Eleccion de habilidad P2
-    x = 0
-    for h in p2.getHabilidades():
-
-        x = x + 1
-    habilidadp2 = random.randint(0,3)
-
-    # Comprobacion de turno para la Ultimate
-    while habilidadp2 == 3 and Turnop1 < 4:
-        habilidadp2 = random.randint(0, 2)
-
-    # Comprueba la habilidad elegida
-    if habilidadp1 == 0:
-        p1.getHabilidades[habilidadp1]().qSkill()
-    elif habilidadp1 == 1:
-        p1.getHabilidades[habilidadp1]().wSkill()
-    elif habilidadp1 == 2:
-        p1.getHabilidades[habilidadp1]().eSkill()
-    elif habilidadp1 == 3:
-        p1.getHabilidades[habilidadp1]().qSkill()
-
-    # Comprueba si la habilidad cura
-    if p2.getHabilidades()[habilidadp2].getHealth() > 0:
-        p2.getHealth(p2.getHabilidades()[habilidadp2].getHealth())
-
-    # Comprueba si la habilidad proporciona escudo
-    if p2.getHabilidades()[habilidadp2].getShield() > 0:
-        p2.getHealth(p2.getHabilidades()[habilidadp2].getShield())
-
-    #Restar vida al oponente
-    p1.restarVida(p2.getHabilidades()[habilidadp2].getDamage())
-
-    #Si un jugador ha utilizado la Ultimate, reinicia los turnos, sino los aumenta
-    if habilidadp1 == 3:
-        Turnop1 = 0
     else:
-        Turnop1 = Turnop1+1
+        print(p1.getNombre()+ "no puede atacar en esta ronda.")
 
-    if habilidadp2 == 3:
-        Turnop2 = 0
+
+    if p1.getHabilidades()[habilidadp1].getStun()==0:
+        #Eleccion de habilidad P2
+        x = 0
+        for h in p2.getHabilidades():
+
+            x = x + 1
+        habilidadp2 = random.randint(0,3)
+
+        # Comprobacion de turno para la Ultimate
+        while habilidadp2 == 3 and Turnop1 < 4:
+            habilidadp2 = random.randint(0, 2)
+
+        # Comprueba la habilidad elegida
+        if habilidadp1 == 0:
+            p2.getHabilidades()[habilidadp2].qSkill(p2.getNombre)
+        elif habilidadp1 == 1:
+            p2.getHabilidades()[habilidadp2].wSkill(p2.getNombre)
+        elif habilidadp1 == 2:
+            p2.getHabilidades()[habilidadp2].eSkill(p2.getNombre)
+        elif habilidadp1 == 3:
+            p2.getHabilidades()[habilidadp2].qSkill(p2.getNombre)
+
+        # Comprueba si la habilidad cura
+        if p2.getHabilidades()[habilidadp2].getHealth() > 0:
+            p2.getHealth(p2.getHabilidades()[habilidadp2].getHealth())
+
+        # Comprueba si la habilidad proporciona escudo
+        if p2.getHabilidades()[habilidadp2].getShield() > 0:
+            p2.getHealth(p2.getHabilidades()[habilidadp2].getShield())
+
+        #Restar vida al oponente
+        p1.restarVida(p2.getHabilidades()[habilidadp2].getDamage())
+
+        #Si un jugador ha utilizado la Ultimate, reinicia los turnos, sino los aumenta
+        if habilidadp1 == 3:
+            Turnop1 = 0
+        else:
+            Turnop1 = Turnop1+1
+
+        if habilidadp2 == 3:
+            Turnop2 = 0
+        else:
+            Turnop2 = Turnop2+1
+            
     else:
-        Turnop2 = Turnop2+1
+        print(p2.getNombre()+ "no puede atacr en esta ronda.")
 
 #Final del combate
 if p1.getHp() <= 0:
     print(p2.getNombre()+" ha ganado.")
     print("Enhorabuena")
+
 if p2.getHp() <= 0:
    print(p1.getNombre()+" ha ganado.")
    print("Enhorabuena")

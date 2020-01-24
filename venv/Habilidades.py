@@ -7,7 +7,7 @@ class Habilidades:
         self.damage = damage
         self.health = health
         self.shield = shield
-        self.stun = stun
+        self.stun = 0
 
     def  getSkillname(self):
         return self.skillname
@@ -40,37 +40,50 @@ class Habilidades:
         self.stun = stun
 
     # Modificadores de habilidad Q
-    def qSkill(self):
-        q=random.randint(0,1)
-        if champp1=="Kayn":
+    def qSkill(self, champ):
+
+        if champ=="Kayn":
+            q = random.randint(0, 1)
             if q == 0:
                 self.setDamage(self.getDamage()*2)
 
-        elif champp1=="Sylas":
+        elif champ=="Sylas":
             q = random.randint(0, 1)
             if q==0:
                 self.setDamage(self.getDamage()*1.25)
 
-        elif champp1=="Ekko":
+        elif champ=="Ekko":
             q = random.randint(0, 1)
             if q==0:
                 self.setDamage(self.getDamage()*1.5)
 
     #Modificadores de habilidad W
-    def wSkill(self):
-        if champp1=="Kayn":
+    def wSkill(self, champ):
+        if champ=="Kayn":
             self.setDamage(self.getDamage())
 
-        elif champp1=="Sylas":
+        elif champ=="Sylas":
             if champp1.getHp() < 850:
                 self.setDamage(self.getDamage()*1.35)
                 self.setHealth(self.getHealth()*1.35)
 
-        elif champp1=="Ekko":
-            w = random.randint(0, 1)
+        elif champ=="Ekko":
+            w = random.randint(0)
             if w==0:
                 self.setStun(1)
 
+    # Modificadores de habilidad E
+    def eSkill(self, champ):
+        if champ=="Kayn":
+            self.setHealth(self.getHealth())
+
+        elif champ=="Sylas":
+            e = random.randint(0,1)
+            if e == 1:
+                self.setDamage(self.getDamage()*1.85)
+
+        elif champ=="Ekko":
+                self.setDamage(self.getDamage())
 
 
 
