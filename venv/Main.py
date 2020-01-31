@@ -1,23 +1,25 @@
+# -*- coding: UTF-8 -*-
+
 from Personaje import Personaje
 from Habilidades import Habilidades
 from ListaPersonajes import ListaPersonajes
 import random
 
 
-qKayn=Habilidades("Corte Segador", 140, 0, 0, "-")
-wKayn=Habilidades("Alcance de cuchilla", 270, 0, 0, "-")
-eKayn=Habilidades("Paso sombrio", 0, 150, 0, "-")
-rKayn=Habilidades("Transgresion de umbral", 350, 300, 0, "-")
+qKayn=Habilidades("Corte Segador", 140, 0, 0, 0)
+wKayn=Habilidades("Alcance de cuchilla", 270, 0, 0, 0)
+eKayn=Habilidades("Paso sombrio", 0, 150, 0, 0)
+rKayn=Habilidades("Transgresion de umbral", 350, 300, 0, 1)
 
-qSylas=Habilidades("Azote de cadenas", 100, 0, 0, "-")
-wSylas=Habilidades("Matarreyes", 205, 150, 0, "-")
-eSylas=Habilidades("Fuga", 220, 0, 0, "-")
-rSylas=Habilidades("Usurpacion", 0, 0, 0, "-")
+qSylas=Habilidades("Azote de cadenas", 100, 0, 0, 0)
+wSylas=Habilidades("Matarreyes", 205, 150, 0, 0)
+eSylas=Habilidades("Fuga", 220, 0, 0, 0)
+rSylas=Habilidades("Usurpacion", 0, 0, 0, 0)
 
-qEkko=Habilidades("Rebobinador de tiempo", 260, 0, 0, "-")
-wEkko=Habilidades("Convergencia paralela", 0, 0, 160, "-")
-eEkko=Habilidades("Salto de fase", 140, 0, 0, "-")
-rEkko=Habilidades("Cronorruptura", 450, 200, 0, "-")
+qEkko=Habilidades("Rebobinador de tiempo", 260, 0, 0, 0)
+wEkko=Habilidades("Convergencia paralela", 0, 0, 160, 0)
+eEkko=Habilidades("Salto de fase", 140, 0, 0, 0)
+rEkko=Habilidades("Cronorruptura", 450, 200, 0, 0)
 
 
 Kayn=Personaje("Kayn", 2500)
@@ -73,13 +75,19 @@ while  p1.getHp() > 0 and p2.getHp() > 0:
 
 
     #Grafica de los personajes
-    print("~------------------------~")
-    print("| "+str(Turnop1)+"              "+ str(p2.getHp()) +"|"+ p2.getNombre() +" |")
-    print("|                        |")
-    print("|                        |")
-    print("| "+  p1.getNombre() +"|"+ str( p1.getHp())+"                |")
-    print("~---------------------~")
-
+    print("")
+    print("  ××××××××××××××××××××××××××××××××××××××  ")
+    print("                  "+ p1.getNombre())
+    print("                  "+ str(p1.getHp()))
+    print("  ×××××××××××__     ______  ××××××××××××  ")
+    print("             \ \   / / ___|               ")
+    print("              \ \ / /\___ \               ")
+    print("               \ V /  ___) |              ")
+    print("  ××××××××××××× \_/  |____/ ××××××××××××  ")
+    print("                  " + str(p2.getHp()))
+    print("                  " + p2.getNombre())
+    print("  ××××××××××××××××××××××××××××××××××××××  ")
+    print("")
     turno = 0
 
     if p2.getHabilidades()[habilidadp2].getStun()==0:
@@ -97,13 +105,14 @@ while  p1.getHp() > 0 and p2.getHp() > 0:
 
         #Comprueba la habilidad elegida
         if habilidadp1 == 0:
-            p1.getHabilidades()[habilidadp1].qSkill(p1.getNombre)
+            p1.getHabilidades()[habilidadp1].qSkill(p1.getNombre())
         elif habilidadp1 == 1:
-            p1.getHabilidades()[habilidadp1].wSkill(p1.getNombre)
+            p1.getHabilidades()[habilidadp1].wSkill(p1.getNombre())
         elif habilidadp1 == 2:
-            p1.getHabilidades()[habilidadp1].eSkill(p1.getNombre)
+            p1.getHabilidades()[habilidadp1].eSkill(p1.getNombre())
         elif habilidadp1 == 3:
-            p1.getHabilidades()[habilidadp1].qSkill(p1.getNombre)
+            p1.getHabilidades()[habilidadp1].rSkill(p1.getNombre(), p2)
+            Turnop1=0
 
         #Comprueba si la habilidad estunea
         if p1.getHabilidades()[habilidadp1].getStun == 1:
@@ -121,7 +130,8 @@ while  p1.getHp() > 0 and p2.getHp() > 0:
         p2.restarVida(p1.getHabilidades()[habilidadp1].getDamage())
 
     else:
-        print(p1.getNombre()+ "no puede atacar en esta ronda.")
+        print(p1.getNombre()+ " no puede atacar en esta ronda.")
+        p2.getHabilidades()[habilidadp1].setStun(0)
 
 
     if p1.getHabilidades()[habilidadp1].getStun()==0:
@@ -145,6 +155,7 @@ while  p1.getHp() > 0 and p2.getHp() > 0:
             p2.getHabilidades()[habilidadp2].eSkill(p2.getNombre)
         elif habilidadp1 == 3:
             p2.getHabilidades()[habilidadp2].qSkill(p2.getNombre)
+            Turnop2=0
 
         # Comprueba si la habilidad cura
         if p2.getHabilidades()[habilidadp2].getHealth() > 0:
@@ -169,7 +180,8 @@ while  p1.getHp() > 0 and p2.getHp() > 0:
             Turnop2 = Turnop2+1
             
     else:
-        print(p2.getNombre()+ "no puede atacr en esta ronda.")
+        print(p2.getNombre()+ " no puede atacar en esta ronda.")
+        p1.getHabilidades()[habilidadp1].setStun(0)
 
 #Final del combate
 if p1.getHp() <= 0:
