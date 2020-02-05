@@ -52,7 +52,7 @@ class Habilidades:
                 self.setDamage(self.getDamage())
 
             print("  ××××××××××××××××××××××××××××××××××××××  ")
-            print("   Kayn:     ")
+            print("   Kayn: "+ self.getSkillname())
             print("  ××××××××××××××××××××××××××××××××××××××  ")
 
         elif champ=="Sylas":
@@ -62,6 +62,10 @@ class Habilidades:
             else:
                 self.setDamage(self.getDamage())
 
+            print("  ××××××××××××××××××××××××××××××××××××××  ")
+            print("   Sylas: " + self.getSkillname())
+            print("  ××××××××××××××××××××××××××××××××××××××  ")
+
         elif champ=="Ekko":
             q = random.randint(0, 1)
             if q==0:
@@ -69,10 +73,18 @@ class Habilidades:
             else:
                 self.setDamage(self.getDamage())
 
+            print("  ××××××××××××××××××××××××××××××××××××××  ")
+            print("   Ekko: " + self.getSkillname())
+            print("  ××××××××××××××××××××××××××××××××××××××  ")
+
     #Modificadores de habilidad W
     def wSkill(self, champ):
         if champ=="Kayn":
             self.setDamage(self.getDamage())
+
+            print("  ××××××××××××××××××××××××××××××××××××××  ")
+            print("   Kayn: " + self.getSkillname())
+            print("  ××××××××××××××××××××××××××××××××××××××  ")
 
         elif champ=="Sylas":
             w = random.randint(0, 5)
@@ -84,7 +96,7 @@ class Habilidades:
                 self.setHealth(self.getHealth())
 
             print("  ××××××××××××××××××××××××××××××××××××××  ")
-            print("   Kayn:     ")
+            print("   Sylas: " + self.getSkillname())
             print("  ××××××××××××××××××××××××××××××××××××××  ")
 
         elif champ=="Ekko":
@@ -94,11 +106,18 @@ class Habilidades:
             else:
                 self.setStun(0)
 
+            print("  ××××××××××××××××××××××××××××××××××××××  ")
+            print("   Ekko: " + self.getSkillname())
+            print("  ××××××××××××××××××××××××××××××××××××××  ")
 
     # Modificadores de habilidad E
     def eSkill(self, champ):
         if champ=="Kayn":
             self.setHealth(self.getHealth())
+
+            print("  ××××××××××××××××××××××××××××××××××××××  ")
+            print("   Kayn: " + self.getSkillname())
+            print("  ××××××××××××××××××××××××××××××××××××××  ")
 
         elif champ=="Sylas":
             e = random.randint(0,1)
@@ -108,14 +127,25 @@ class Habilidades:
             else:
                 self.setDamage(self.getDamage())
 
+            print("  ××××××××××××××××××××××××××××××××××××××  ")
+            print("   Sylas: " + self.getSkillname())
+            print("  ××××××××××××××××××××××××××××××××××××××  ")
+
         elif champ=="Ekko":
                 self.setDamage(self.getDamage())
 
+        print("  ××××××××××××××××××××××××××××××××××××××  ")
+        print("   Ekko: " + self.getSkillname())
+        print("  ××××××××××××××××××××××××××××××××××××××  ")
 
     def rSkill(self, champ, champ2):
         if champ=="Kayn":
             self.setStun(self.getStun()+1)
             print("Kayn se ha hecho invulnerable")
+
+            print("  ××××××××××××××××××××××××××××××××××××××  ")
+            print("   Sylas: " + self.getSkillname())
+            print("  ××××××××××××××××××××××××××××××××××××××  ")
 
         elif champ=="Sylas":
             self.setStun(champ2.getHabilidades()[3].getStun())
@@ -123,9 +153,17 @@ class Habilidades:
             self.setHealth(champ2.getHabilidades()[3].getHealth())
             self.setShield(champ2.getHabilidades()[3].getShield())
 
-        elif champ=="Ekko":
-                self.setDamage(self.getDamage())
+            print("  ××××××××××××××××××××××××××××××××××××××  ")
+            print("   Sylas: " + self.getSkillname())
+            print("  ××××××××××××××××××××××××××××××××××××××  ")
 
+
+        elif champ=="Ekko":
+            self.setDamage(self.getDamage())
+
+            print("  ××××××××××××××××××××××××××××××××××××××  ")
+            print("   Ekko: " + self.getSkillname())
+            print("  ××××××××××××××××××××××××××××××××××××××  ")
 
 
 
